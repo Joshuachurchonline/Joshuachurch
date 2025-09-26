@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joshua Church</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --secondary: #6366f1;
+      --dark: #1e293b;
+      --light: #f1f5f9;
+      --background: var(--light);
+      --text: var(--dark);
+      --card-bg: #ffffff;
+      --header-bg: #ffffff;
+      --footer-bg: var(--dark);
+      --footer-text: #ffffff;
+    }
+
+    body.dark-mode {
+      --background: #0f172a;
+      --text: #f1f5f9;
+      --card-bg: #1e293b;
+      --header-bg: #1e293b;
+      --footer-bg: #0f172a;
+      --footer-text: #f1f5f9;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
+    body { background: var(--background); color: var(--text); line-height: 1.6; transition: background 0.3s, color 0.3s; }
+
+    header { background: var(--header-bg); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; transition: background 0.3s; }
+    header h1 { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+    nav { display: flex; align-items: center; flex-wrap: wrap; }
+    nav a { margin-left: 1.5rem; text-decoration: none; font-weight: 500; color: var(--text); transition: color 0.3s; }
+    nav a:hover { color: var(--primary); }
+
+    .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center; flex-direction: column; text-align: center; padding: 2rem; margin-top: 5rem; padding-left: 5rem;  background-image: url('https://res.cloudinary.com/vop/image/fetch/w_1280,h_852,c_fill,g_center,f_auto//https://bi-admin.bibleinfo.com/sites/default/files/the-lord-my-shepherd-smaller.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 25px; color: white; position: relative; }
+    .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); border-radius: 25px; z-index: 0; }
+    .hero h2, .hero p, .hero .btn { position: relative; z-index: 1; }
+    .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 700; }
+    .hero p { font-size: 1.2rem; margin-bottom: 2rem; font-weight: 400; }
+    .btn { background: white; color: var(--primary); padding: 0.75rem 1.5rem; border-radius: 30px; font-weight: 600; text-decoration: none; transition: background 0.3s, color 0.3s; }
+    .btn:hover { background: var(--dark); color: white; }
+
+    section { padding: 4rem 2rem; max-width: 1100px; margin: auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .card { background: var(--card-bg); padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: transform 0.3s, background 0.3s, color 0.3s; text-align: center; }
+    .card:hover { transform: translateY(-5px); }
+    .card a { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-decoration: none; color: inherit; }
+    .card a:hover { text-decoration: none; }
+    .card i { font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); transition: color 0.3s; }
+
+    footer { background: var(--footer-bg); color: var(--footer-text); text-align: center; padding: 2rem; transition: background 0.3s, color 0.3s; }
+
+    .toggle-btn { cursor: pointer; background: none; color: var(--text); border: none; font-size: 1.5rem; margin-left: 1rem; transition: color 0.3s; }
+    .toggle-btn:hover { color: var(--primary); }
+
+    .search-container { max-width: 600px; margin: auto; display: flex; align-items: center; border: 1px solid #ccc; border-radius: 50px; overflow: hidden; padding: 0.2rem 0.5rem; background: var(--card-bg); }
+    .search-container input { flex: 1; border: none; outline: none; padding: 0.75rem 1rem; font-size: 1rem; background: transparent; color: var(--text); }
+    .search-container button { border: none; padding: 0.5rem 0.75rem; border-radius: 50%; color: gray; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: background 0.3s; }
+    .search-container button:hover { background: white; }
+
+    @media (max-width: 768px) {
+      header { flex-direction: column; align-items: flex-start; }
+      nav { margin-top: 1rem; width: 100%; display: flex; flex-direction: column; }
+      nav a { margin: 0.5rem 0; }
+      .hero h2 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
+      section { padding: 3rem 1rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Joshua Church</h1>
+    <nav>
+      <a href="#features">Quiet Time</a>
+      <a href="#praisesong">Praise Song</a>
+      <a href="#search">Search</a>
+      <button class="toggle-btn" onclick="toggleMode()"><i class="ri-moon-line"></i></button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Worship and Grow in Christ</h2>
+    <p>"The LORD is my shepherd; I shall not want." - Psalm 23:1</p>
+    <a href="#search" class="btn"><i class="ri-messenger-line"></i> Join Group Quiet Time</a>
+  </section>
+
+  <section id="features">
+    <h2 style="text-align:center; margin-bottom:2rem;">Quiet Time</h2>
+    <div class="grid">
+      <div class="card">
+        <a href="https://sum.su.or.kr:8888/Upload/E12/Khmer%20Sep-Dec%202025.pdf" download>
+          <i class="ri-smartphone-line"></i>
+          <h3>Download Quiet Time PDF</h3>
+          <p>Khmer Sep-Dec 2025.pdf</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="https://m.me/YourMessengerGroupLink" target="_blank">
+          <i class="ri-messenger-line"></i>
+          <h3>Join Group Quiet Time</h3>
+          <p>Join with our messenger group to share your Quiet Time</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+          <i class="ri-layout-masonry-line"></i>
+          <h3>Post Your Quiet Time</h3>
+          <p>Post your daily touching with God and prayer requests</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="praisesong">
+    <h2 style="text-align:center; margin-bottom:2rem;">Praise Song</h2>
+    <div class="grid">
+      <div class="card">
+        <a href="#">
+          <i class="ri-music-line"></i>
+          <h3>Praise the Lord</h3>
+          <p>Download Praise the Lord song book</p>
+        </a>
+      </div>
+      <div class="card">
+        <a href="#">
+          <i class="ri-music-line"></i>
+          <h3>Powerpoint Slide</h3>
+          <p>All Song Worship</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="search">
+    <h2 style="text-align:center; margin-bottom:2rem;">Search</h2>
+    <div class="search-container">
+      <input type="text" placeholder="Search your file...">
+      <button><i class="ri-search-line"></i></button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Joshua Church. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
